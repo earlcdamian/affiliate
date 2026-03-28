@@ -3,170 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>E7 Affiliate</title>
+<title>E7 Damian</title>
+
 <style>
-body {
-  font-family: Arial, sans-serif;
-  margin:0;
-  background:#f5f5f5;
-}
-
-header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:#111;
-  color:white;
-  padding:15px 20px;
-  position:sticky;
-  top:0;
-  z-index:100;
-}
-
-header .logo { font-size:1.5rem; font-weight:bold; }
-.admin-btn { background:orange; color:white; border:none; padding:8px 12px; border-radius:5px; cursor:pointer; }
-
-.container { max-width:1200px; margin:auto; padding:15px; }
-
-/* ADMIN PANEL */
-#adminPanel {
-  background:#fff;
-  padding:15px;
-  border-radius:10px;
-  margin-bottom:20px;
-  box-shadow:0 3px 10px rgba(0,0,0,0.1);
-}
-
-#adminPanel input { width:100%; padding:10px; margin-bottom:10px; border-radius:8px; border:1px solid #ccc; }
-
-/* SEARCH */
-#search { width:100%; padding:10px; margin-bottom:20px; border-radius:8px; border:1px solid #ccc; }
-
-/* GRID */
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
-  gap:20px;
-}
-
-.card {
-  background:#fff;
-  border-radius:12px;
-  padding:15px;
-  text-align:center;
-  box-shadow:0 3px 10px rgba(0,0,0,0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow:0 5px 15px rgba(0,0,0,0.15);
-}
-
-.card h4 { margin-bottom:10px; }
-
-.buy { background:green; color:white; padding:8px 12px; border:none; border-radius:5px; cursor:pointer; text-decoration:none; display:inline-block; }
-
-.delete { background:red; color:white; padding:5px 10px; border:none; border-radius:5px; cursor:pointer; margin-top:5px; }
-
-.hidden { display:none; }
+* { box-sizing: border-box; margin:0; padding:0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background:#f8f9fb; color:#222; overflow-x:hidden; }
+header { display:flex; justify-content:space-between; align-items:center; padding:15px 25px; background:#000; color:#fff; }
+.logo { display:flex; align-items:center; gap:10px; }
+.logo img { height:38px; }
+.hero { background:linear-gradient(135deg,#000,#222); color:#fff; padding:40px 20px; text-align:center; }
+.hero h1 { font-size:2rem; }
+.hero p { color:#ccc; margin-top:10px; }
+.container { max-width:1100px; margin:auto; padding:20px; }
+#search { width:100%; padding:12px; border-radius:10px; border:1px solid #ddd; margin-bottom:25px; font-size:1rem; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:20px; }
+.card { background:#fff; border-radius:15px; padding:20px; box-shadow:0 5px 15px rgba(0,0,0,0.08); transition:0.3s; }
+.card:hover { transform:translateY(-6px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
+.card h4 { font-size:1rem; margin-bottom:15px; }
+.buy { display:block; width:100%; text-align:center; padding:10px; background:#28a745; color:#fff; border-radius:8px; text-decoration:none; font-weight:bold; transition:0.3s; }
+.buy:hover { background:#218838; }
+.empty { text-align:center; margin-top:40px; color:#777; }
+footer { border-top:1px solid #ccc; background:#fff; color:#555; padding:30px 20px; text-align:center; }
+.footer-copy { font-size:0.85rem; color:#777; }
+@media(max-width:500px){ .hero h1 { font-size:1.5rem; } }
+.falling-logo { position: fixed; top: -50px; width: 40px; height: 40px; z-index: 9999; pointer-events: none; animation: fall linear forwards; }
+@keyframes fall { 0% { transform: translateY(0) rotate(0deg); opacity:0; } 10% { opacity:1; } 100% { transform: translateY(110vh) rotate(360deg); opacity:0; } }
 </style>
 </head>
+
 <body>
 
 <header>
-  <div class="logo">E7 Affiliate</div>
-  <button class="admin-btn" onclick="login()">Admin Login</button>
+  <div class="logo">
+    <img src="e7logo.png" alt="E7 Logo">
+  </div>
 </header>
 
-<div class="container">
-
-  <!-- ADMIN PANEL -->
-  <div id="adminPanel" class="hidden">
-    <h3>Add Product</h3>
-    <input type="text" id="name" placeholder="Product Name">
-    <input type="text" id="link" placeholder="Affiliate Link">
-    <button onclick="addProduct()">Add Product</button>
-  </div>
-
-  <!-- SEARCH -->
-  <input type="text" id="search" placeholder="Search products..." onkeyup="renderProducts()">
-
-  <!-- PRODUCT GRID -->
-  <div class="grid" id="products"></div>
-
+<div class="hero">
+  <h1>E7 Damian Affiliate</h1>
+  <p>Parts, Gear, Deals – All in One Ride.</p>
 </div>
 
+<div class="container">
+  <input type="text" id="search" placeholder="Search products..." onkeyup="renderProducts()">
+  <div class="grid" id="products"></div>
+</div>
+
+<footer>
+  <div class="footer-copy">
+    © 2026 E7 Damian Affiliate | All Rights Reserved
+  </div>
+</footer>
+
 <script>
-let isAdmin = false;
+// --- Hardcoded products ---
+const productsData = [
+  { name: "SEC Modular Helmet ", link: "https://example.com/helmet-pro-x" },
+  { name: "Helmet Bag", link: "https://example.com/riding-gloves" },
+];
 
-// ADMIN LOGIN
-function login() {
-  const pass = prompt("Enter Admin Password:");
-  if(pass === "P@ssw0rd") {
-    isAdmin = true;
-    document.getElementById("adminPanel").classList.remove("hidden");
-    renderProducts();
-  } else {
-    alert("Wrong password");
-  }
-}
-
-// LOCALSTORAGE FUNCTIONS
-function getProducts() {
-  return JSON.parse(localStorage.getItem("products")) || [];
-}
-
-function saveProducts(products) {
-  localStorage.setItem("products", JSON.stringify(products));
-}
-
-// ADD PRODUCT
-function addProduct() {
-  const name = document.getElementById("name").value;
-  const link = document.getElementById("link").value;
-
-  if(!name || !link) { alert("Fill all fields!"); return; }
-
-  const products = getProducts();
-  products.push({name, link, createdAt: Date.now()});
-  saveProducts(products);
-  renderProducts();
-
-  document.getElementById("name").value="";
-  document.getElementById("link").value="";
-}
-
-// DELETE PRODUCT
-function deleteProduct(index) {
-  const products = getProducts();
-  products.splice(index,1);
-  saveProducts(products);
-  renderProducts();
-}
-
-// RENDER PRODUCTS
+// --- Render products ---
 function renderProducts() {
   const container = document.getElementById("products");
-  container.innerHTML = "";
-
   const searchValue = document.getElementById("search").value.toLowerCase();
+  const filtered = productsData.filter(p => p.name.toLowerCase().includes(searchValue));
 
-  const products = getProducts().filter(p => p.name.toLowerCase().includes(searchValue));
+  container.innerHTML = "";
+  if(filtered.length === 0){
+    container.innerHTML = `<div class="empty">No products found 😢</div>`;
+    return;
+  }
 
-  products.forEach((p,index)=>{
-    container.innerHTML += `
-      <div class="card">
-        <h4>${p.name}</h4>
-        <a href="${p.link}" target="_blank" class="buy">Buy Now</a>
-        ${isAdmin ? `<button class="delete" onclick="deleteProduct(${index})">Delete</button>` : ""}
-      </div>
+  filtered.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <h4>${p.name}</h4>
+      <a href="${p.link}" target="_blank" class="buy">Buy Now</a>
     `;
+    container.appendChild(card);
   });
 }
 
-// INITIAL RENDER
+// Initial render
 renderProducts();
+
+// --- Falling logos ---
+function createFallingLogo() {
+  const logo = document.createElement('img');
+  logo.src = 'e7logo.png';
+  logo.className = 'falling-logo';
+  logo.style.left = Math.random() * window.innerWidth + 'px';
+  const size = 30 + Math.random() * 30;
+  logo.style.width = size + 'px';
+  logo.style.height = size + 'px';
+  const duration = 4 + Math.random() * 4;
+  logo.style.animationDuration = duration + 's';
+  document.body.appendChild(logo);
+  setTimeout(()=>logo.remove(), duration*1000);
+}
+setInterval(()=>{ const count=2+Math.floor(Math.random()*3); for(let i=0;i<count;i++) createFallingLogo(); }, 500);
 </script>
 
 </body>
