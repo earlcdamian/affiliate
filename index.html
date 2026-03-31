@@ -6,28 +6,166 @@
 <title>E7 Damian</title>
 
 <style>
-* { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: 'Segoe UI', Arial, sans-serif; background:#f8f9fb; color:#222; overflow-x:hidden; }
-header { display:flex; justify-content:space-between; align-items:center; padding:15px 25px; background:#000; color:#fff; }
-.logo { display:flex; align-items:center; gap:10px; }
-.logo img { height:38px; }
-.hero { background:linear-gradient(135deg,#000,#222); color:#fff; padding:40px 20px; text-align:center; }
-.hero h1 { font-size:2rem; }
-.hero p { color:#ccc; margin-top:10px; }
-.container { max-width:1100px; margin:auto; padding:20px; }
-#search { width:100%; padding:12px; border-radius:10px; border:1px solid #ddd; margin-bottom:25px; font-size:1rem; }
-.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:20px; }
-.card { background:#fff; border-radius:15px; padding:20px; box-shadow:0 5px 15px rgba(0,0,0,0.08); transition:0.3s; }
-.card:hover { transform:translateY(-6px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
-.card h4 { font-size:1rem; margin-bottom:15px; }
-.buy { display:block; width:100%; text-align:center; padding:10px; background:#28a745; color:#fff; border-radius:8px; text-decoration:none; font-weight:bold; transition:0.3s; }
-.buy:hover { background:#218838; }
-.empty { text-align:center; margin-top:40px; color:#777; }
-footer { border-top:1px solid #ccc; background:#fff; color:#555; padding:30px 20px; text-align:center; }
-.footer-copy { font-size:0.85rem; color:#777; }
-@media(max-width:500px){ .hero h1 { font-size:1.5rem; } }
-.falling-logo { position: fixed; top: -50px; width: 40px; height: 40px; z-index: 9999; pointer-events: none; animation: fall linear forwards; }
-@keyframes fall { 0% { transform: translateY(0) rotate(0deg); opacity:0; } 10% { opacity:1; } 100% { transform: translateY(110vh) rotate(360deg); opacity:0; } }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #fff;
+    color: #111;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background: #111;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo img { height: 40px; }
+
+nav a {
+    margin-left: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+nav a:hover { color: #999; }
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 80px 20px 60px;
+    background: #f5f5f5;
+}
+.hero img { width: 120px; margin-bottom: 15px; }
+.hero p { font-size: 1.1rem; color: #555; }
+
+/* CONTAINER */
+.container { max-width: 1100px; margin: auto; padding: 20px; }
+
+/* SECTION TITLES */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 30px 0 15px;
+    color: #111;
+}
+
+/* PRODUCTS HEADER */
+.products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.products-header #search {
+    width: 250px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+/* CARD */
+.card {
+    background: #f5f5f5;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.card h4 { margin-bottom: 15px; color: #111; }
+
+/* BUTTONS */
+.btn {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.buy { background: #111; color: #fff; }
+.buy:hover { background: #555; }
+
+/* SERVICE BOX */
+.service-box {
+    background: #f5f5f5;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    line-height: 1.6;
+    color: #111;
+}
+
+/* INQUIRY */
+.inquiry {
+    text-align: center;
+    margin-top: 40px;
+}
+.inquiry a {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 25px;
+    border-radius: 8px;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.inquiry a:hover { background: #555; }
+
+/* FLOATING SOCIAL */
+.floating-social {
+    position: fixed;
+    right: 15px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.floating-social a {
+    background: #111;
+    color: #fff;
+    padding: 12px;
+    border-radius: 50%;
+    text-align: center;
+    transition: 0.3s;
+}
+.floating-social a:hover { background: #555; }
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+    font-size: 0.9rem;
+    color: #555;
+}
+footer .contact-info { margin-top: 5px; color: #888; }
 </style>
 </head>
 
@@ -37,72 +175,115 @@ footer { border-top:1px solid #ccc; background:#fff; color:#555; padding:30px 20
   <div class="logo">
     <img src="e7logo.png" alt="E7 Logo">
   </div>
+  <nav>
+    <a href="#products">Affiliate</a>
+    <a href="#inquiry">Contact</a>
+  </nav>
 </header>
 
 <div class="hero">
-  <h1>E7 Damian Affiliate</h1>
-  <p>Parts, Gear, Deals – All in One Ride.</p>
+  <img src="e7logo.png" alt="E7 Logo">
+  <p>Affiliate • IT Services • Web Solutions</p>
 </div>
 
 <div class="container">
-  <input type="text" id="search" placeholder="Search products..." onkeyup="renderProducts()">
-  <div class="grid" id="products"></div>
+
+<!-- PRODUCTS -->
+<div id="products">
+  <div class="products-header">
+    <div class="section-title">Affiliate Products Links</div>
+    <input type="text" id="search" placeholder="Search..." onkeyup="renderProducts()">
+  </div>
+  <div class="grid" id="products-list"></div>
+</div>
+
+<!-- SERVICES -->
+<div class="section-title" style="margin-top:30px;">💻 IT & Web Services</div>
+
+<div class="grid" style="margin-top:15px;">
+  <div class="card">
+    <h4>🖥️ IT Support</h4>
+    <ul style="list-style-type: disc; padding-left:20px; line-height:1.6; color:#111;">
+      <li>Provide remote and onsite technical support for hardware, software, and network issues</li>
+      <li>Performed Windows installation, system reformatting, and PC maintenance</li>
+      <li>Upgraded computer storage (SSD/HDD)</li>
+      <li>Printer, biometric & peripheral setup</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4>🌐 Web Development</h4>
+    <ul style="list-style-type: disc; padding-left:20px; line-height:1.6; color:#111;">
+      <li>Custom, responsive websites built with modern technologies</li>
+      <li>Converted design mockups into functional, mobile-friendly websites</li>
+      <li>Optimized website performance and fixed front-end issues</li>
+      <li>Focus on exceptional user experiences</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4>🎓 Academic Assistance</h4>
+    <ul style="list-style-type: disc; padding-left:20px; line-height:1.6; color:#111;">
+      <li>Assisted students in capstone and programming projects</li>
+      <li>Debugged and improved existing systems and applications</li>
+    </ul>
+  </div>
+</div>
+
+<!-- INQUIRY -->
+<div id="inquiry" class="inquiry">
+  <h2>📩 Inquiry / Contact</h2>
+  <p>Open for collabs, invites, and work!<br>If you have a project in mind or questions about my services, don’t hesitate to message me.</p>
+  <a href="https://facebook.com/earl1of1" target="_blank">Message on Facebook</a>
+  <a href="mailto:earlcdamian@gmail.com">Send Email</a>
+</div>
+
 </div>
 
 <footer>
-  <div class="footer-copy">
-    © 2026 E7 Damian Affiliate | All Rights Reserved
-  </div>
+  © 2026 E7 | All Rights Reserved
 </footer>
 
 <script>
-// --- Hardcoded products ---
+// DATA
 const productsData = [
-  { name: "SEC Modular Helmet ", link: "https://example.com/helmet-pro-x" },
-  { name: "Helmet Bag", link: "https://example.com/riding-gloves" },
+  { name:"Modular SEC Helmet", link:"tiktok.com" },
+  { name:"Helmet Bag", link:"https://tiktok.com" },
+    { name:"Lever Brake", link:"https://tiktok.com" },
+      { name:"Quick Tire", link:"https://tiktok.com" },
+        { name:"MicroFiber Towel", link:"https://tiktok.com" },
+          { name:"Mask Buy1Take1", link:"https://tiktok.com" },
+            { name:"Tire Foam CLeaner", link:"https://tiktok.com" },
+             { name:"MotorcycleGloves", link:"https://tiktok.com" },
+  { name:"Car Phone Charger", link:"https://tiktok.com" },
+  { name:"Car Fire Extinguisher", link:"https://tiktok.com" },
+  { name:"Car Phone Holder", link:"https://tiktok.com" },
+    { name:"Car Door Protector", link:"https://tiktok.com" }
 ];
 
-// --- Render products ---
+// SEARCH FUNCTION
 function renderProducts() {
-  const container = document.getElementById("products");
-  const searchValue = document.getElementById("search").value.toLowerCase();
-  const filtered = productsData.filter(p => p.name.toLowerCase().includes(searchValue));
-
+  const container = document.getElementById("products-list");
+  const search = document.getElementById("search").value.toLowerCase();
+  const filtered = productsData.filter(x => x.name.toLowerCase().includes(search));
   container.innerHTML = "";
-  if(filtered.length === 0){
-    container.innerHTML = `<div class="empty">No products found 😢</div>`;
+
+  if(filtered.length===0) {
+    container.innerHTML = `<div>No result....</div>`;
     return;
   }
 
-  filtered.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <h4>${p.name}</h4>
-      <a href="${p.link}" target="_blank" class="buy">Buy Now</a>
-    `;
-    container.appendChild(card);
+  filtered.forEach(item => {
+    container.innerHTML += `
+    <div class="card">
+      <h4>${item.name}</h4>
+      <a href="${item.link}" class="btn buy" target="_blank">Buy</a>
+    </div>`;
   });
 }
 
-// Initial render
+// INITIAL LOAD
 renderProducts();
-
-// --- Falling logos ---
-function createFallingLogo() {
-  const logo = document.createElement('img');
-  logo.src = 'e7logo.png';
-  logo.className = 'falling-logo';
-  logo.style.left = Math.random() * window.innerWidth + 'px';
-  const size = 30 + Math.random() * 30;
-  logo.style.width = size + 'px';
-  logo.style.height = size + 'px';
-  const duration = 4 + Math.random() * 4;
-  logo.style.animationDuration = duration + 's';
-  document.body.appendChild(logo);
-  setTimeout(()=>logo.remove(), duration*1000);
-}
-setInterval(()=>{ const count=2+Math.floor(Math.random()*3); for(let i=0;i<count;i++) createFallingLogo(); }, 500);
 </script>
 
 </body>
