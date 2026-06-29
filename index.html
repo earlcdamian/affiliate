@@ -101,23 +101,23 @@
             text-align: center;
             width: 90%;
             max-width: 850px;
-            padding: 0; /* Inalis ang padding */
-            background: none; /* Inalis ang white box background */
-            border: none; /* Inalis ang dashed border */
-            box-shadow: none; /* Inalis ang box shadow */
+            padding: 0; 
+            background: none; 
+            border: none; 
+            box-shadow: none; 
         }
         .hero-content h1 {
             font-size: 3.5rem;
             font-weight: 900;
             margin-bottom: 1.5rem;
             letter-spacing: 1px;
-            color: #fff; /* Ginawang White para lutang sa madidilim na motor pic */
+            color: #fff; 
             text-shadow: 4px 4px 0px #c0392b, -2px -2px 0px #2c3e50, 2px -2px 0px #2c3e50, -2px 2px 0px #2c3e50, 2px 2px 0px #2c3e50;
         }
         .hero-content p {
             font-size: 1.3rem;
             line-height: 1.6;
-            color: #fff; /* Ginawang White para klaro */
+            color: #fff; 
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.9), -1px -1px 0px #2c3e50, 1px -1px 0px #2c3e50, -1px 1px 0px #2c3e50, 1px 1px 0px #2c3e50;
         }
@@ -344,9 +344,15 @@
             .nav-links {
                 gap: 1.2rem;
             }
+            
+            /* PINAG-ISA ANG LALABAS NA PIC PAG CP VIEW (earlmoto.jpg na lang) */
             .image-grid {
-                grid-template-columns: repeat(2, 1fr); 
+                grid-template-columns: 1fr; 
             }
+            .image-grid .slide-pic:not(:first-child) {
+                display: none; /* Itatago nito yung 3 iba pang pictures */
+            }
+            
             .hero-container {
                 height: 45vh; 
             }
@@ -371,9 +377,6 @@
         }
 
         @media (max-width: 380px) {
-            .image-grid {
-                grid-template-columns: 1fr;
-            }
             .hero-content h1 {
                 font-size: 1.5rem;
             }
@@ -382,7 +385,6 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="logo">SIX7VEN CLUB</div>
         <ul class="nav-links">
@@ -392,7 +394,6 @@
         </ul>
     </nav>
 
-    <!-- HERO BACKGROUND -->
     <header class="hero-container">
         <div class="image-grid">
             <div class="slide-pic" style="background-image: url('earlmoto.jpg');"></div>
@@ -401,85 +402,45 @@
             <div class="slide-pic" style="background-image: url('earlmoto.jpg3.jpg');"></div>
         </div>
         
-        <!-- Purong Text na lang dito -->
         <div class="hero-content">
-            
             <p>Motorcycle parts, riding gears, accessories, gadgets, and daily essentials that I personally recommend. Shop through my affiliate links and support Six7ven Club.</p>
         </div>
     </header>
 
-    <!-- SEARCH TAB -->
     <section class="search-container">
         <input type="text" id="searchInput" class="search-box" placeholder="Search for parts, gears, accessories...">
     </section>
 
-    <!-- PRODUCTS SECTION -->
     <main class="products-section" id="products">
         <div style="text-align: center;"><h2 class="section-title">My Mio 125 Concept</h2></div>
         
         <div class="products-grid" id="productsGrid">
             
-            <!-- Product 1 -->
-            <div class="product-card" data-name="helmet riding gear fullface spyder kyt">
-                <img src="helmet.jpg" alt="Premium Fullface Helmet" class="product-img">
+            <div class="product-card" data-name="exhaust motorcycle parts muffler trc pipe open pipe original">
+                <img src="trc.jpeg" alt="TRC Pipe" class="product-img">
                 <div class="product-info">
-                    <span class="product-category">Riding Gears</span>
-                    <h3 class="product-title">Premium Fullface Helmet</h3>
-                    <a href="YOUR_AFFILIATE_LINK_HERE" target="_blank" class="product-btn">Buy on Shopee / Lazada</a>
-                </div>
-            </div>
-
-            <!-- Product 2 -->
-            <div class="product-card" data-name="exhaust motorcycle parts muffler akrapovic sc project">
-                <img src="exhaust.jpg" alt="Performance Exhaust" class="product-img">
-                <div class="product-info">
-                    <span class="product-category">Motorcycle Parts</span>
-                    <h3 class="product-title">Performance Exhaust System</h3>
-                    <a href="YOUR_AFFILIATE_LINK_HERE" target="_blank" class="product-btn">Buy on Shopee / Lazada</a>
-                </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="product-card" data-name="intercom gadget bluetooth headset freedconn cardo">
-                <img src="intercom.jpg" alt="Rider Bluetooth Intercom" class="product-img">
-                <div class="product-info">
-                    <span class="product-category">Gadgets</span>
-                    <h3 class="product-title">Waterproof Bluetooth Intercom</h3>
-                    <a href="YOUR_AFFILIATE_LINK_HERE" target="_blank" class="product-btn">Buy on Shopee / Lazada</a>
-                </div>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="product-card" data-name="gloves riding gear protective hand gear">
-                <img src="gloves.jpg" alt="Tactical Riding Gloves" class="product-img">
-                <div class="product-info">
-                    <span class="product-category">Riding Gears</span>
-                    <h3 class="product-title">Tactical Riding Gloves</h3>
-                    <a href="YOUR_AFFILIATE_LINK_HERE" target="_blank" class="product-btn">Buy on Shopee / Lazada</a>
+                    <h3 class="product-title">TRC Pipe</h3>
+                    <a href="https://www.tiktok.com/" target="_blank" class="product-btn">Buy Here</a>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <!-- CONTACT SECTION -->
     <section class="contact-section" id="contact">
         <div class="contact-container">
             <h2>100k + Views on TikTok</h2>
             <p class="contact-tagline">Open for collabs, invites, and work!</p>
             
             <div class="social-links-grid">
-                <!-- Facebook Link -->
                 <a href="https://facebook.com/earl1of1" target="_blank" class="social-btn facebook">
                     Facebook
                 </a>
                 
-                <!-- Instagram Link -->
                 <a href="https://instagram.com/earl1of1" target="_blank" class="social-btn instagram">
                     Instagram
                 </a>
                 
-                <!-- Gmail Direct Mailto Link -->
                 <a href="mailto:earlcdamian@gmail.com" class="social-btn gmail">
                     Gmail
                 </a>
@@ -491,7 +452,6 @@
         </div>
     </section>
 
-    <!-- JAVASCRIPT FOR LIVE SEARCH FILTER -->
     <script>
         const searchInput = document.getElementById('searchInput');
         const productCards = document.querySelectorAll('.product-card');
